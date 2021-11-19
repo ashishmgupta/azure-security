@@ -1,6 +1,6 @@
 # Administrator role in Azure AD
 #https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference
-
+# added comment here
 # Recommendation on conditional access : require MFA for administrators
 #https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/howto-conditional-access-policy-admin-mfa
 
