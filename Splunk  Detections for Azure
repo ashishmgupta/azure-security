@@ -1,0 +1,7 @@
+Azure cloud-only account creation detected :
+Azure cloud only account (typically ending with onmicsoroft.com) is a standalone account and not related with the on-prem AD. 
+Its a good security practice for cloud administrators to have separate cloud account for work on administration tasks so if their corp account is compromised by attackers, corp accounts can not be used to do admin tasks in Azure.
+However, an attacker with admin privileges in Azure can use the same tactic to create a cloud only account in Azure as a backdoor to use it later. This correlation search will detect that activity.
+
+index=azure result="success" activityDisplayName="Add user" "targetResources{}.userPrincipalName"="*.onmicrosoft.com" "targetResources{}.userPrincipalName"!="*#EXT#*" initiatedBy.user.userPrincipalName!="Sync_*" 
+| table _time activityDateTime source activityDisplayName initiatedBy.user.userPrincipalName targetResources{}.displayName targetResources{}.userPrincipalName additionalDetails{}.key additionalDetails{}.value targetResources{}.modifiedProperties{}.displayName targetResources{}.modifiedProperties{}.oldValue targetResources{}.modifiedProperties{}.newValue
